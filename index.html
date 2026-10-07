@@ -366,30 +366,6 @@
                                 <td class="py-4 px-6 text-right font-bold text-slate-500">46 pts</td>
                                 <td class="py-4 px-6 text-right font-bold text-orange-600">32 pts</td>
                             </tr>
-                            <tr class="hover:bg-slate-50 transition">
-                                <td class="py-4 px-6 font-semibold text-sky-600"><i class="fa-solid fa-person-running mr-2"></i>Outdoor</td>
-                                <td class="py-4 px-6 font-bold text-slate-900">Frisbee 🥏</td>
-                                <td class="py-4 px-6 text-center"><span class="px-3 py-1 rounded-full bg-sky-500/20 text-sky-600 font-bold">15 responses</span></td>
-                                <td class="py-4 px-6 text-right font-black text-amber-600 text-base">65 pts</td>
-                                <td class="py-4 px-6 text-right font-bold text-slate-500">46 pts</td>
-                                <td class="py-4 px-6 text-right font-bold text-orange-600">32 pts</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition">
-                                <td class="py-4 px-6 font-semibold text-rose-600"><i class="fa-solid fa-feather mr-2"></i>Indoor</td>
-                                <td class="py-4 px-6 font-bold text-slate-900">Billiards 🎱</td>
-                                <td class="py-4 px-6 text-center"><span class="px-3 py-1 rounded-full bg-rose-500/20 text-rose-600 font-bold">13 responses</span></td>
-                                <td class="py-4 px-6 text-right font-black text-amber-600 text-base">55 pts</td>
-                                <td class="py-4 px-6 text-right font-bold text-slate-500">38 pts</td>
-                                <td class="py-4 px-6 text-right font-bold text-orange-600">28 pts</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition">
-                                <td class="py-4 px-6 font-semibold text-rose-600"><i class="fa-solid fa-feather mr-2"></i>Indoor</td>
-                                <td class="py-4 px-6 font-bold text-slate-900">Swimming 🏊</td>
-                                <td class="py-4 px-6 text-center"><span class="px-3 py-1 rounded-full bg-rose-500/20 text-rose-600 font-bold">12 responses</span></td>
-                                <td class="py-4 px-6 text-right font-black text-amber-600 text-base">50 pts</td>
-                                <td class="py-4 px-6 text-right font-bold text-slate-500">35 pts</td>
-                                <td class="py-4 px-6 text-right font-bold text-orange-600">25 pts</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -404,7 +380,7 @@
                 <span class="text-rose-500 font-semibold uppercase tracking-widest text-xs">Lookup Database</span>
                 <h2 class="text-3xl sm:text-4xl font-black mt-2 font-heading">Department Roster & House Search</h2>
                 <p class="text-slate-500 mt-2 text-sm">Type any name, sport, or program (e.g. "Sharma", "PhD", "Badminton") to find a house assignment, whether or not that person has registered for sports yet.</p>
-                <p id="lastUpdated" class="text-slate-400 text-xs mt-3 italic">Last updated: 2 Oct 2026 — all 279 Team_Distribution.xlsx members included, enriched with sport/contact details for the 118 who've filled the Nexus interest form; everyone else is marked "Not registered"</p>
+                <p id="lastUpdated" class="text-slate-400 text-xs mt-3 italic">Last updated: 8 Oct 2026 — 311 department members and registered participants, enriched with sport/contact details for everyone who's filled the Nexus interest form; everyone else is marked "Not registered"</p>
             </div>
 
             <!-- Search Bar Input -->
@@ -459,8 +435,6 @@
                         <li class="flex items-center gap-2"><i class="fa-solid fa-check text-rose-500"></i> Table Tennis</li>
                         <li class="flex items-center gap-2"><i class="fa-solid fa-check text-rose-500"></i> Chess</li>
                         <li class="flex items-center gap-2"><i class="fa-solid fa-check text-rose-500"></i> Fuss Ball</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-rose-500"></i> Billiards</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-rose-500"></i> Swimming</li>
                     </ul>
                 </div>
 
@@ -476,7 +450,7 @@
                         <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-500"></i> Volleyball & Football</li>
                         <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-500"></i> Running & Kabaddi</li>
                         <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-500"></i> Basketball & Kho-Kho</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-500"></i> Lawn Tennis & Frisbee</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-500"></i> Lawn Tennis</li>
                     </ul>
                 </div>
             </div>
@@ -558,7 +532,7 @@
         });
 
         // Countdown Timer to Oct 9, 2026 18:00:00
-        const eventDate = new Date('October 9, 2026 18:00:00').getTime();
+        const eventDate = new Date('October 9, 2026 17:00:00').getTime();
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = eventDate - now;
@@ -585,23 +559,23 @@
         updateCountdown();
 
         // Full department roster (Team_Distribution.xlsx, 279 members) merged with Nexus 2026-27.xlsx
-        // sports-interest responses where available. People who haven't filled the form yet
-        // still appear (registered: false) so anyone can be found and their house confirmed.
+        // sports-interest responses where available (deduplicated by phone number so repeat
+        // form submissions don't create the same person twice or split them across houses).
         const participants = [
             { name: "Mushtala balakishore", program: "PhD 2nd year", sport: "Badminton, Swimming, Cricket, Kho-kho, Kabaddi, Running, Volleyball", team: "Vajra", phone: "+91 85200 04776", registered: true },
-            { name: "Vikas Kumar", program: "PhD 2nd year", sport: "Cricket", team: "Ayas", phone: "+91 83180 76281", registered: true },
+            { name: "Vikas Kumar", program: "PhD 2nd year", sport: "Cricket", team: "Astra", phone: "+91 83180 76281", registered: true },
             { name: "Sayali Dounde", program: "PhD (>2nd year)", sport: "Carrom, Cricket, Kho-kho, Running", team: "Vajra", phone: "+91 77965 62388", registered: true },
-            { name: "Shashwat Kumar Mishra", program: "PhD (>2nd year)", sport: "Lawn Tennis", team: "Vajra", phone: "+91 80931 56096", registered: true },
+            { name: "Shashwat Kumar Mishra", program: "PhD (>2nd year)", sport: "Lawn Tennis", team: "Wootz", phone: "+91 80931 56096", registered: true },
             { name: "Promila", program: "PhD (>2nd year)", sport: "Badminton, Carrom, Running, Lawn Tennis, Kho-kho", team: "Vajra", phone: "+91 90533 58603", registered: true },
-            { name: "Swathi Arendra", program: "PhD (>2nd year)", sport: "Table Tennis, Billiards, Lawn Tennis", team: "Astra", phone: "+91 73381 95187", registered: true },
+            { name: "Swathi Arendra", program: "PhD (>2nd year)", sport: "Table Tennis, Billiards, Lawn Tennis", team: "Ayas", phone: "+91 73381 95187", registered: true },
             { name: "Satya Sundar Das", program: "PhD 1st year", sport: "Cricket", team: "Wootz", phone: "+91 87684 25329", registered: true },
             { name: "SHIBAM KARMAKAR", program: "PhD (>2nd year)", sport: "Carrom, Badminton, Cricket, Lawn Tennis, Volleyball", team: "Vajra", phone: "+91 82506 07438", registered: true },
-            { name: "Harsh Kumar Singh", program: "PhD 1st year", sport: "Badminton, Volleyball", team: "Vajra", phone: "+91 72751 79950", registered: true },
+            { name: "Harsh Kumar Singh", program: "PhD 1st year", sport: "Badminton, Volleyball", team: "Astra", phone: "+91 72751 79950", registered: true },
             { name: "Harsh Rohilla", program: "PhD 2nd year", sport: "Cricket, Frisbee, Volleyball", team: "Wootz", phone: "+91 95874 33974", registered: true },
-            { name: "Durgesh", program: "PhD (>2nd year)", sport: "Carrom, Cricket, Volleyball", team: "Ayas", phone: "+91 87889 48077", registered: true },
+            { name: "Durgesh", program: "PhD (>2nd year)", sport: "Carrom, Cricket, Volleyball", team: "Vajra", phone: "+91 87889 48077", registered: true },
             { name: "Mohan Kumar N", program: "PhD (>2nd year)", sport: "Badminton, Carrom, Kabaddi, Volleyball", team: "Ayas", phone: "974038", registered: true },
-            { name: "Jayasurya K", program: "Staff", sport: "Badminton, Basketball, Cricket, Football, Kabaddi, Running, Volleyball", team: "Vajra", phone: "+91 63853 61262", registered: true },
-            { name: "Akash Prajapati", program: "MTech 2nd year", sport: "Chess, Kho-kho, Kabaddi", team: "Vajra", phone: "+91 72669 33656", registered: true },
+            { name: "Jayasurya K", program: "Staff", sport: "Badminton, Basketball, Cricket, Football, Kabaddi, Running, Volleyball", team: "Ayas", phone: "+91 63853 61262", registered: true },
+            { name: "Akash Prajapati", program: "MTech 2nd year", sport: "Chess, Kho-kho, Kabaddi", team: "Ayas", phone: "+91 72669 33656", registered: true },
             { name: "Sumitkumar Rathor", program: "PostDoc", sport: "Cricket, Volleyball", team: "Astra", phone: "+91 94212 95948", registered: true },
             { name: "Mohammed Kedir", program: "PhD (>2nd year)", sport: "Table Tennis, Football", team: "Astra", phone: "+91 80736 40421", registered: true },
             { name: "Phaneendra Kumar", program: "MTech 1st year", sport: "Badminton, Chess, Carrom, Cricket, Kho-kho, Running", team: "Astra", phone: "+91 93909 63146", registered: true },
@@ -615,11 +589,9 @@
             { name: "Grandhi V V S M Saatvik", program: "BTech", sport: "Badminton, Chess, Carrom, Fuss ball, Football", team: "Ayas", phone: "+91 78927 28936", registered: true },
             { name: "Rupesh J", program: "PhD (>2nd year)", sport: "Table Tennis, Basketball, Running, Frisbee", team: "Wootz", phone: "+91 99491 23208", registered: true },
             { name: "Birhanu Balewgizie", program: "PhD 2nd year", sport: "Table Tennis, Football", team: "Vajra", phone: "917349227144", registered: true },
-            { name: "Ritesh Tandon", program: "PhD 2nd year", sport: "Basketball, Cricket, Running, Volleyball", team: "Astra", phone: "+91 99816 13568", registered: true },
-            { name: "Ritesh Tandon", program: "PhD 2nd year", sport: "Not specified", team: "Vajra", phone: "+91 99816 13568", registered: true },
-            { name: "Dapulou", program: "PhD (>2nd year)", sport: "Running", team: "Wootz", phone: "+91 70056 02146", registered: true },
-            { name: "Arji Brijesh Rao", program: "BTech", sport: "Kho-kho", team: "Astra", phone: "+91 96327 27283", registered: true },
-            { name: "Rachakonda Benarji", program: "PhD 1st year", sport: "Carrom, Cricket", team: "Ayas", phone: "+91 91215 36432", registered: true },
+            { name: "Ritesh Tandon", program: "PhD 2nd year", sport: "Basketball, Cricket, Running, Volleyball", team: "Ayas", phone: "+91 99816 13568", registered: true },
+            { name: "Dapulou", program: "PhD (>2nd year)", sport: "Running", team: "Astra", phone: "+91 70056 02146", registered: true },
+            { name: "Rachakonda Benarji", program: "PhD 1st year", sport: "Carrom, Cricket", team: "Wootz", phone: "+91 91215 36432", registered: true },
             { name: "Olive Chakraborty", program: "BTech", sport: "Table Tennis", team: "Wootz", phone: "+91 98300 69027", registered: true },
             { name: "Amogh Kapoor", program: "BTech", sport: "Badminton, Fuss ball", team: "Ayas", phone: "+91 78966 64245", registered: true },
             { name: "Atharva Vadalkar", program: "MTech 1st year", sport: "Lawn Tennis, Basketball", team: "Wootz", phone: "+91 95350 43030", registered: true },
@@ -627,68 +599,64 @@
             { name: "Gopesh Kumar Gupta", program: "UG 4th and 5th years", sport: "Badminton, Billiards, Chess, Table Tennis, Basketball, Volleyball", team: "Vajra", phone: "+91 95710 03745", registered: true },
             { name: "Aditya Thakkar", program: "UG 3rd year", sport: "Volleyball, Frisbee", team: "Astra", phone: "+91 96013 63799", registered: true },
             { name: "Jai vignesh", program: "PhD 2nd year", sport: "Badminton, Chess, Billiards, Carrom, Cricket, Frisbee, Football", team: "Astra", phone: "+91 99400 50324", registered: true },
-            { name: "R PRAVEEN", program: "BTech", sport: "Badminton, Chess, Basketball", team: "Astra", phone: "+91 77604 29347", registered: true },
+            { name: "R PRAVEEN", program: "BTech", sport: "Badminton, Chess, Basketball, Cricket, Football", team: "Astra", phone: "+91 77604 29347", registered: true },
             { name: "Mayur Uikey", program: "MTech Res", sport: "Badminton, Basketball", team: "Astra", phone: "+91 93025 95081", registered: true },
             { name: "Mohanakumari Senthilkumar Tharini", program: "UG 4th and 5th years", sport: "Billiards, Table Tennis, Badminton, Basketball, Running", team: "Ayas", phone: "+91 84386 90771", registered: true },
             { name: "Souharda Khan", program: "UG 3rd year", sport: "Chess, Football", team: "Wootz", phone: "+91 70441 70022", registered: true },
             { name: "K Sai Charan", program: "PhD 1st year", sport: "Badminton, Volleyball, Football, Cricket, Basketball, Kabaddi", team: "Vajra", phone: "+91 77806 71242", registered: true },
             { name: "Ahmed Kabeer K K", program: "PhD 1st year", sport: "Not specified", team: "Astra", phone: "+91 82812 30164", registered: true },
-            { name: "Dilip G", program: "Staff", sport: "Table Tennis, Basketball, Cricket, Football, Running, Volleyball", team: "Ayas", phone: "+91 78994 00753", registered: true },
+            { name: "Dilip G", program: "Staff", sport: "Table Tennis, Basketball, Cricket, Football, Running, Volleyball, Badminton, Billiards, Frisbee, Kabaddi, Lawn Tennis", team: "Ayas", phone: "+91 78994 00753", registered: true },
             { name: "Anupma Thakur", program: "PostDoc", sport: "Carrom", team: "Vajra", phone: "+91 78885 51053", registered: true },
-            { name: "Rekha V A", program: "Staff", sport: "Badminton, Chess, Kabaddi, Kho-kho", team: "Astra", phone: "+91 78920 54806", registered: true },
+            { name: "Rekha V A", program: "Staff", sport: "Badminton, Chess, Kabaddi, Kho-kho", team: "Ayas", phone: "+91 78920 54806", registered: true },
             { name: "Rishabh", program: "UG 2nd year", sport: "Cricket", team: "Ayas", phone: "+91 99118 07255", registered: true },
-            { name: "Akram Raza", program: "PhD 1st year", sport: "Cricket", team: "Wootz", phone: "+91 88584 96855", registered: true },
+            { name: "Akram Raza", program: "PhD 1st year", sport: "Cricket", team: "Vajra", phone: "+91 88584 96855", registered: true },
             { name: "Anubhav Singh", program: "PhD (>2nd year)", sport: "Badminton, Cricket", team: "Vajra", phone: "+91 94118 11558", registered: true },
-            { name: "SUREDDY TEJANATH REDDY", program: "PostDoc", sport: "Lawn Tennis", team: "Ayas", phone: "+91 89191 87284", registered: true },
+            { name: "SUREDDY TEJANATH REDDY", program: "PostDoc", sport: "Lawn Tennis", team: "Wootz", phone: "+91 89191 87284", registered: true },
             { name: "Rohit Ahire", program: "MTech 1st year", sport: "Chess, Table Tennis, Cricket, Kabaddi", team: "Vajra", phone: "+91 96894 64124", registered: true },
-            { name: "Manu M Nair", program: "PostDoc", sport: "Badminton, Cricket, Volleyball", team: "Ayas", phone: "+91 70128 76560", registered: true },
+            { name: "Manu M Nair", program: "PostDoc", sport: "Badminton, Cricket, Volleyball", team: "Astra", phone: "+91 70128 76560", registered: true },
             { name: "Nupur Kulkarni", program: "MTech 1st year", sport: "Badminton, Chess, Carrom, Fuss ball", team: "Wootz", phone: "+91 98230 95534", registered: true },
-            { name: "Mokalla Uday", program: "MTech 2nd year", sport: "Badminton, Cricket, Volleyball", team: "Vajra", phone: "+91 87907 54904", registered: true },
+            { name: "Mokalla Uday", program: "MTech 2nd year", sport: "Badminton, Cricket, Volleyball, Fuss ball, Carrom", team: "Vajra", phone: "+91 87907 54904", registered: true },
             { name: "Savinay Goel", program: "BTech", sport: "Fuss ball, Swimming, Kabaddi", team: "Astra", phone: "+91 97012 06034", registered: true },
             { name: "Chaduvula Rahul", program: "BTech", sport: "Badminton, Chess, Fuss ball, Cricket, Kabaddi, Volleyball", team: "Vajra", phone: "+91 70931 44416", registered: true },
             { name: "Khushal Hatkar", program: "UG 4th and 5th years", sport: "Chess", team: "Astra", phone: "+91 97689 35069", registered: true },
             { name: "Sachin Rondiya", program: "Professor", sport: "Badminton, Cricket, Kho-kho, Running, Football", team: "Ayas", phone: "+91 82375 15759", registered: true },
             { name: "Juvva Srinithya", program: "MTech 1st year", sport: "Not specified", team: "Wootz", phone: "+91 91216 23688", registered: true },
-            { name: "Ashis Maharathi", program: "Staff", sport: "Badminton, Cricket, Kabaddi", team: "Wootz", phone: "+91 88955 17510", registered: true },
-            { name: "Rishabh Soni", program: "PhD (>2nd year)", sport: "Billiards, Carrom, Swimming, Cricket, Football, Frisbee, Lawn Tennis, Running", team: "Wootz", phone: "+91 75870 69969", registered: true },
+            { name: "Ashis Maharathi", program: "Staff", sport: "Badminton, Cricket, Kabaddi", team: "Vajra", phone: "+91 88955 17510", registered: true },
+            { name: "Rishabh Soni", program: "PhD (>2nd year)", sport: "Billiards, Carrom, Swimming, Cricket, Football, Frisbee, Lawn Tennis, Running", team: "Vajra", phone: "+91 75870 69969", registered: true },
             { name: "Nipun Jain", program: "PhD (>2nd year)", sport: "Chess, Billiards, Carrom, Swimming, Cricket, Football, Kabaddi, Lawn Tennis, Volleyball", team: "Wootz", phone: "+91 95402 09811", registered: true },
-            { name: "Rahul Mondal", program: "PhD 1st year", sport: "Badminton, Table Tennis, Fuss ball, Cricket, Football, Lawn Tennis", team: "Vajra", phone: "+91 98837 92581", registered: true },
+            { name: "Rahul Mondal", program: "PhD 1st year", sport: "Badminton, Table Tennis, Fuss ball, Cricket, Football, Lawn Tennis", team: "Wootz", phone: "+91 98837 92581", registered: true },
             { name: "ALUGUNDU SIVAKUMAR", program: "MTech 1st year", sport: "Badminton, Carrom, Table Tennis, Basketball, Cricket, Football, Frisbee, Kabaddi, Volleyball", team: "Ayas", phone: "+91 91030 41885", registered: true },
             { name: "Ruchit", program: "UG 3rd year", sport: "Fuss ball, Running", team: "Vajra", phone: "+91 84688 11603", registered: true },
             { name: "Mayank Bohat", program: "UG 3rd year", sport: "Not specified", team: "Vajra", phone: "+91 80764 76190", registered: true },
             { name: "Lad Bhumi Girishbhai", program: "MTech 2nd year", sport: "Badminton, Carrom, Cricket, Kabaddi, Kho-kho", team: "Astra", phone: "09664599112", registered: true },
-            { name: "Gowtham", program: "PhD (>2nd year)", sport: "Badminton, Swimming, Billiards, Table Tennis", team: "Wootz", phone: "+91 96000 19964", registered: true },
-            { name: "Dilip G", program: "Staff", sport: "Badminton, Billiards, Table Tennis, Basketball, Cricket, Football, Frisbee, Kabaddi, Lawn Tennis, Running, Volleyball", team: "Astra", phone: "+91 78994 00753", registered: true },
-            { name: "R PRAVEEN", program: "BTech", sport: "Badminton, Chess, Basketball, Cricket, Football", team: "Wootz", phone: "+91 77604 29347", registered: true },
+            { name: "Gowtham", program: "PhD (>2nd year)", sport: "Badminton, Swimming, Billiards, Table Tennis", team: "Ayas", phone: "+91 96000 19964", registered: true },
             { name: "Abhay Prasad", program: "MTech 1st year", sport: "Table Tennis, Kho-kho, Running", team: "Ayas", phone: "07063437516", registered: true },
             { name: "Abhishek K Sharma", program: "MTech 1st year", sport: "Basketball", team: "Wootz", phone: "+91 84395 62661", registered: true },
             { name: "Rohit Kumar", program: "PhD 2nd year", sport: "Cricket", team: "Ayas", phone: "+91 70704 80561", registered: true },
             { name: "PALLI KARTHIKEYA", program: "MTech 2nd year", sport: "Chess, Carrom, Fuss ball, Volleyball, Cricket, Kabaddi", team: "Ayas", phone: "+91 90529 81470", registered: true },
             { name: "AKKABATHULA PRADEEP", program: "PhD 1st year", sport: "Carrom, Cricket", team: "Astra", phone: "+91 91829 61826", registered: true },
             { name: "Nabajyoti Das", program: "PhD 1st year", sport: "Carrom, Cricket", team: "Astra", phone: "+91 78469 63323", registered: true },
-            { name: "Abhijeet Mohanta", program: "PhD 1st year", sport: "Cricket", team: "Ayas", phone: "+91 72057 16001", registered: true },
+            { name: "Abhijeet Mohanta", program: "PhD 1st year", sport: "Cricket", team: "Astra", phone: "+91 72057 16001", registered: true },
             { name: "Ashutosh Yadav", program: "MTech 1st year", sport: "Badminton", team: "Astra", phone: "+91 73799 47493", registered: true },
             { name: "N Mahodith", program: "BTech", sport: "Chess, Carrom, Fuss ball, Cricket, Volleyball", team: "Ayas", phone: "+91 90593 31324", registered: true },
             { name: "Prashil Joshi", program: "PhD 2nd year", sport: "Carrom, Cricket, Kabaddi", team: "Astra", phone: "+91 91304 09456", registered: true },
-            { name: "Noumaan", program: "PhD (>2nd year)", sport: "Swimming, Cricket, Football, Frisbee, Lawn Tennis, Running, Volleyball", team: "Vajra", phone: "+91 96825 95039", registered: true },
+            { name: "Noumaan", program: "PhD (>2nd year)", sport: "Swimming, Cricket, Football, Frisbee, Lawn Tennis, Running, Volleyball", team: "Wootz", phone: "+91 96825 95039", registered: true },
             { name: "Abhay Raj Singh", program: "PhD 1st year", sport: "Badminton, Cricket", team: "Vajra", phone: "+91 86306 46422", registered: true },
             { name: "Sanket Basavaraj Baragudi", program: "PhD 1st year", sport: "Basketball, Cricket, Football, Volleyball", team: "Wootz", phone: "+91 93099 88344", registered: true },
-            { name: "Mokalla Uday", program: "MTech 2nd year", sport: "Badminton, Fuss ball, Carrom, Cricket, Volleyball", team: "Vajra", phone: "+91 87907 54904", registered: true },
-            { name: "Md Kaif", program: "MTech 2nd year", sport: "Carrom, Cricket, Football, Kabaddi", team: "Ayas", phone: "+91 99315 04605", registered: true },
+            { name: "Md Kaif", program: "MTech 2nd year", sport: "Carrom, Cricket, Football, Kabaddi", team: "Vajra", phone: "+91 99315 04605", registered: true },
             { name: "Mehul", program: "UG 4th and 5th years", sport: "Badminton, Cricket", team: "Ayas", phone: "+91 73399 28945", registered: true },
             { name: "DINESHKUMAR K", program: "MTech 1st year", sport: "Badminton, Table Tennis", team: "Astra", phone: "+91 99437 97022", registered: true },
-            { name: "Saurav Ranjan Sahay", program: "PhD (>2nd year)", sport: "Basketball, Cricket, Football, Volleyball, Running", team: "Ayas", phone: "+91 91625 34882", registered: true },
+            { name: "Saurav Ranjan Sahay", program: "PhD (>2nd year)", sport: "Basketball, Cricket, Football, Volleyball, Running", team: "Astra", phone: "+91 91625 34882", registered: true },
             { name: "Abhinav Chandraker", program: "PhD (>2nd year)", sport: "Billiards, Fuss ball, Table Tennis, Swimming, Kho-kho, Running", team: "Wootz", phone: "+91 99201 28329", registered: true },
             { name: "Adarsh Bhadouria", program: "BTech", sport: "Carrom, Fuss ball, Table Tennis", team: "Ayas", phone: "+91 70002 08367", registered: true },
             { name: "Utkarsh Singh", program: "BTech", sport: "Chess, Carrom, Badminton, Cricket", team: "Wootz", phone: "+91 92348 38934", registered: true },
             { name: "Rohith K.M.S.", program: "PhD (>2nd year)", sport: "Basketball, Frisbee, Football", team: "Wootz", phone: "+91 99805 75015", registered: true },
             { name: "Agastasya Gaur", program: "UG 4th and 5th years", sport: "Badminton", team: "Astra", phone: "+91 88148 35448", registered: true },
             { name: "Nipun", program: "UG 4th and 5th years", sport: "Not specified", team: "Wootz", phone: "+91 88267 91116", registered: true },
-            { name: "Sathvik Madagani", program: "MTech 1st year", sport: "Badminton, Cricket, Volleyball", team: "Vajra", phone: "+91 63022 06881", registered: true },
+            { name: "Sathvik Madagani", program: "MTech 1st year", sport: "Badminton, Cricket, Volleyball, Running", team: "Vajra", phone: "+91 63022 06881", registered: true },
             { name: "M. Monishkumar", program: "MTech 1st year", sport: "Cricket, Running", team: "Vajra", phone: "+91 96003 80721", registered: true },
-            { name: "Sathvik Madagani", program: "MTech 1st year", sport: "Badminton, Cricket, Running, Volleyball", team: "Vajra", phone: "+91 63022 06881", registered: true },
             { name: "Vikranth", program: "BTech", sport: "Chess", team: "Vajra", phone: "+91 63036 41904", registered: true },
-            { name: "Lakshya lal choudhary", program: "UG 4th and 5th years", sport: "Carrom, Swimming, Kho-kho, Running, Cricket", team: "Astra", phone: "+91 97176 12630", registered: true },
+            { name: "Lakshya lal choudhary", program: "UG 4th and 5th years", sport: "Carrom, Swimming, Kho-kho, Running, Cricket", team: "Wootz", phone: "+91 97176 12630", registered: true },
             { name: "Lipsa Sahoo", program: "PhD 2nd year", sport: "Fuss ball", team: "Wootz", phone: "lipsasahoo@iisc.ac.in", registered: true },
             { name: "Sangeetha C K", program: "PhD (>2nd year)", sport: "Table Tennis, Badminton", team: "Ayas", phone: "+91 94464 58635", registered: true },
             { name: "Balpartap Singh", program: "PhD (>2nd year)", sport: "Badminton, Table Tennis, Cricket, Football, Running, Frisbee", team: "Ayas", phone: "+91 98685 12786", registered: true },
@@ -697,14 +665,13 @@
             { name: "Durgesh Kumar Pandey", program: "PhD (>2nd year)", sport: "Carrom, Swimming, Fuss ball, Frisbee, Kabaddi, Kho-kho", team: "Wootz", phone: "+91 70684 79481", registered: true },
             { name: "Chethan Konkati", program: "PhD (>2nd year)", sport: "Cricket, Football, Volleyball", team: "Astra", phone: "+91 95736 47408", registered: true },
             { name: "Akhil Kumar tiwari", program: "BTech", sport: "Badminton, Table Tennis, Cricket, Football, Kabaddi, Volleyball", team: "Wootz", phone: "+91 90264 03248", registered: true },
-            { name: "Rajavarapu Pavan Kumar", program: "PostDoc", sport: "Badminton, Carrom, Cricket", team: "Wootz", phone: "+91 99355 95035", registered: true },
+            { name: "Rajavarapu Pavan Kumar", program: "PostDoc", sport: "Badminton, Carrom, Cricket", team: "Astra", phone: "+91 99355 95035", registered: true },
             { name: "Surya Teja", program: "PhD (>2nd year)", sport: "Badminton, Carrom", team: "Ayas", phone: "+91 95509 35733", registered: true },
             { name: "Akarsh Naidu", program: "UG 3rd year", sport: "Fuss ball", team: "Wootz", phone: "+91 72056 82987", registered: true },
-            { name: "Yh", program: "Professor", sport: "Table Tennis, Swimming, Lawn Tennis, Kabaddi", team: "Wootz", phone: "Jshz", registered: true },
-            { name: "g shashidhar", program: "PhD (>2nd year)", sport: "Badminton, Fuss ball, Cricket, Kabaddi, Volleyball", team: "Vajra", phone: "+91 80088 32223", registered: true },
-            { name: "karthik sundar", program: "PhD (>2nd year)", sport: "Chess, Fuss ball, Carrom, Billiards, Running", team: "Astra", phone: "+91 94440 15880", registered: true },
+                        { name: "g shashidhar", program: "PhD (>2nd year)", sport: "Badminton, Fuss ball, Cricket, Kabaddi, Volleyball", team: "Vajra", phone: "+91 80088 32223", registered: true },
+            { name: "karthik sundar", program: "PhD (>2nd year)", sport: "Chess, Fuss ball, Carrom, Billiards, Running", team: "Vajra", phone: "+91 94440 15880", registered: true },
             { name: "Piyush Vishwakarma", program: "PhD (>2nd year)", sport: "Carrom, Swimming, Fuss ball, Frisbee, Kabaddi, Kho-kho", team: "Ayas", phone: "+91 82991 89025", registered: true },
-            { name: "Yahea Hussien", program: "PhD 1st year", sport: "Swimming, Basketball, Football", team: "Astra", phone: "+91 81254 74239", registered: true },
+            { name: "Yahea Hussien", program: "PhD 1st year", sport: "Swimming, Basketball, Football", team: "Wootz", phone: "+91 81254 74239", registered: true },
             { name: "Swadesh Laha", program: "PhD (>2nd year)", sport: "Badminton, Volleyball", team: "Wootz", phone: "+91 99328 52611", registered: true },
             { name: "A.Moulishwar Reddy", program: "PhD", sport: "Not registered for sports yet", team: "Astra", phone: "", registered: false },
             { name: "Aarya", program: "Mtech 2026", sport: "Not registered for sports yet", team: "Astra", phone: "", registered: false },
@@ -723,8 +690,7 @@
             { name: "AHANGJEET CHAKRABORTTY", program: "BTech", sport: "Not registered for sports yet", team: "Ayas", phone: "", registered: false },
             { name: "Ahmad Zonoubi", program: "PhD", sport: "Not registered for sports yet", team: "Wootz", phone: "", registered: false },
             { name: "Akash Basu", program: "PhD", sport: "Not registered for sports yet", team: "Ayas", phone: "", registered: false },
-            { name: "Akhand Pratap Singh", program: "PhD", sport: "Not registered for sports yet", team: "Astra", phone: "", registered: false },
-            { name: "Akshara N K", program: "Mtech 2025", sport: "Not registered for sports yet", team: "Ayas", phone: "", registered: false },
+                        { name: "Akshara N K", program: "Mtech 2025", sport: "Not registered for sports yet", team: "Ayas", phone: "", registered: false },
             { name: "Akshat Godha", program: "PhD", sport: "Not registered for sports yet", team: "Ayas", phone: "", registered: false },
             { name: "Akshay Sunil Salvi", program: "PhD", sport: "Not registered for sports yet", team: "Vajra", phone: "", registered: false },
             { name: "Akshay Yadav", program: "PhD", sport: "Not registered for sports yet", team: "Vajra", phone: "", registered: false },
@@ -866,8 +832,7 @@
             { name: "Satyam Suwas", program: "Faculty", sport: "Not registered for sports yet", team: "Vajra", phone: "", registered: false },
             { name: "Saurabh Kumar", program: "Mtech 2025", sport: "Not registered for sports yet", team: "Wootz", phone: "", registered: false },
             { name: "Shreya R", program: "PhD", sport: "Not registered for sports yet", team: "Wootz", phone: "", registered: false },
-            { name: "Shubham Karmokar", program: "PhD", sport: "Not registered for sports yet", team: "Astra", phone: "", registered: false },
-            { name: "Shubham Sisodia", program: "PhD", sport: "Not registered for sports yet", team: "Wootz", phone: "", registered: false },
+                        { name: "Shubham Sisodia", program: "PhD", sport: "Not registered for sports yet", team: "Wootz", phone: "", registered: false },
             { name: "Sikha Laxmi Mohapatra", program: "PhD", sport: "Not registered for sports yet", team: "Wootz", phone: "", registered: false },
             { name: "Sistla Sri Venkata Sarath Chandra", program: "PhD", sport: "Not registered for sports yet", team: "Ayas", phone: "", registered: false },
             { name: "Sita Choudhary", program: "PhD", sport: "Not registered for sports yet", team: "Wootz", phone: "", registered: false },
@@ -903,7 +868,7 @@
             { name: "Utsav Singh Martolia", program: "Mtech 2025", sport: "Not registered for sports yet", team: "Ayas", phone: "", registered: false },
             { name: "Vallimpula Madhavan", program: "PhD", sport: "Not registered for sports yet", team: "Ayas", phone: "", registered: false },
             { name: "Vineeth vanukuru", program: "Mtech 2026", sport: "Not registered for sports yet", team: "Astra", phone: "", registered: false },
-            { name: "Vishal raj amaresh", program: "Mtech 2026", sport: "Not registered for sports yet", team: "Vajra", phone: "", registered: false },
+            { name: "Vishal raj amaresh", program: "Mtech 2026", sport: "Not registered for sports yet", team: "Astra", phone: "", registered: false },
             { name: "Vishwas C", program: "PhD", sport: "Not registered for sports yet", team: "Wootz", phone: "", registered: false },
             { name: "Yellapu Jaswanth", program: "Mtech 2025", sport: "Not registered for sports yet", team: "Ayas", phone: "", registered: false },
             { name: "Yogita Sharma", program: "Mtech 2025", sport: "Not registered for sports yet", team: "Wootz", phone: "", registered: false },
@@ -985,7 +950,7 @@
         // House assignments sourced from Team_Distribution.xlsx (Master List sheet).
         // Keyed by normalized name so newly-added survey respondents who are already
         // on the official roster still get the right house automatically.
-        const TEAM_LOOKUP = {"amoulishwar reddy":"Astra","aarya":"Astra","abhay prasad":"Ayas","abhay raj singh":"Vajra","abhijit das":"Wootz","abhijit mandal":"Wootz","abhik n choudhury":"Astra","abhinav chandraker":"Wootz","abhiram karayi":"Ayas","abhishek balaso kajirnekar":"Ayas","abhishek k sharma":"Wootz","abhishek keshav ghatge":"Ayas","abhishek kirar":"Vajra","abhivardhan reddy gopu":"Ayas","abinandanan t a":"Ayas","achinthya krishna b":"Ayas","adarsh bhadouria":"Ayas","aditi ghosh":"Astra","aditya anand":"Vajra","aditya thakkar":"Astra","agastasya gaur":"Astra","ahangjeet chakrabortty":"Ayas","ahmad zonoubi":"Wootz","ahmed kabeer k k":"Astra","aikansh chouhan":"Wootz","akarsh naidu":"Wootz","akash basu":"Ayas","akhand pratap singh":"Astra","akhil kumar tiwari":"Wootz","akkabathula pradeep":"Astra","akshara n k":"Ayas","akshat godha":"Ayas","akshay sunil salvi":"Vajra","akshay yadav":"Vajra","aloke paul":"Vajra","alugundu sivakumar":"Ayas","amarakonda siri chandana":"Wootz","amey kiran mahajan":"Vajra","amogh kapoor":"Ayas","anandita mishra":"Vajra","anantarupa hore roy":"Astra","ananya panja":"Astra","andrew wisdom zulu":"Ayas","anish atey":"Ayas","ankur chauhan":"Vajra","ankur srivastava":"Astra","annavarapu durga saahiti":"Ayas","anubhav singh":"Vajra","anurag anand":"Ayas","arji brijesh rao":"Astra","aseela abdul azeez":"Vajra","ashitha devi pattabi":"Astra","ashok m raichur":"Wootz","ashutosh yadav":"Astra","asiya s":"Astra","astha khandelwal":"Astra","astik kumar":"Wootz","atharva vadalkar":"Wootz","athira k":"Astra","avilash maji":"Vajra","ayush badaya":"Astra","badal kumar singh":"Vajra","bahni roy":"Astra","balpartap singh":"Ayas","bapan dhara":"Vajra","bavithra m":"Wootz","bency vinse vr":"Ayas","bhagwati prasad":"Vajra","bharath chandran s":"Wootz","bhavika gopal pendam":"Vajra","bhikadiya krishna bhaveshbhai":"Ayas","bhure swapnil shadanan":"Astra","bibhuti bhusan kar":"Astra","bijjam venkata lakshmi praneetha":"Wootz","birhanu balewgizie agmas":"Vajra","boddeda sai kumar":"Wootz","boddula vinay kumar":"Wootz","bright mweene":"Astra","chaduvula rahul":"Vajra","chaitanya panse":"Vajra","chandan srivastava":"Astra","chavda sujal chandrakantbhai":"Vajra","chirantandip mahant":"Vajra","debolina deb":"Ayas","dereje bekele tekliye":"Wootz","dhanyashree m d":"Astra","dibyendu majhi":"Vajra","dineshkumar k":"Astra","donthi yashwanth goud":"Vajra","dova kalyan":"Wootz","durgesh kumar pandey":"Wootz","durgesh rambhau borkar":"Astra","emmadi phaneendra kumar":"Astra","feleke worku tadesse":"Ayas","gangavarapu shashidhar":"Vajra","garikayi rafemoyo":"Ayas","garje sonali devidas":"Wootz","getaw abebe tina":"Wootz","golu gehlot":"Ayas","gopesh kumar gupta":"Vajra","govind s gupta":"Ayas","grandhi v v s m saatvik":"Ayas","gudeta jafo muleta":"Ayas","guttula mohan kumar":"Wootz","harini v":"Vajra","harsh rohilla":"Wootz","hemal singh":"Vajra","hemant kumar":"Ayas","hritwik ghosh":"Vajra","ishu kumar thakur":"Ayas","ishwarabhotla sanjana":"Astra","ismail kamil worke":"Ayas","ismat jamil":"Astra","jai vignesh e":"Astra","javeed ahmad dar":"Ayas","jithunlal s":"Ayas","juvva srinithya":"Wootz","k harjeeth":"Astra","karam jeet pal":"Vajra","karthikeyan s":"Wootz","kartikay verma":"Ayas","kaushal tiwari":"Wootz","kaushik chatterjee":"Ayas","khushal girish hatkar":"Astra","konkati chethan":"Astra","kota sai charan":"Vajra","koustav das":"Wootz","krishn anantharam":"Vajra","krishna agrawal":"Wootz","lad bhumi girishbhai":"Astra","lipsa shaoo":"Wootz","madagani sathvik":"Vajra","mallappa":"Vajra","mamaru wutabachew":"Vajra","manvendra singh":"Ayas","marisetti vikranth sri krishna":"Vajra","mayank bohat":"Vajra","mayank kumar":"Wootz","mayur uikey":"Astra","md iyamot ali":"Wootz","medha shrey":"Astra","mehul darak":"Ayas","mohammed hadhi p p":"Vajra","mohammed kedir mustofa":"Astra","mohan kumar m":"Ayas","mohanakumari senthilkumar tharini":"Ayas","mokalla uday":"Vajra","monika":"Astra","monishkumar m":"Vajra","moses elijah minz":"Vajra","muhstala balakishore":"Vajra","mulakala jaithri":"Astra","nabajoythi das":"Astra","nair jitin satyakumar":"Vajra","nalajala divya":"Vajra","namdi manoja":"Astra","naradhabhatla mahodith":"Ayas","navale aniket rajendra":"Ayas","naveen negi":"Ayas","nikhil suman":"Vajra","nikunj loya":"Astra","nipun":"Wootz","nupur subodh kulkarni":"Wootz","olive chakraborty":"Wootz","p surya samyog":"Vajra","padaikathan p":"Wootz","padmanathanm":"Wootz","pallati tahan kumar":"Vajra","pallavi b m":"Ayas","palli karthikeya":"Ayas","pawar vamshiraj":"Vajra","pikee priya":"Astra","piyush vishwakarma":"Ayas","pooja lohar":"Astra","poulomi basak":"Vajra","pradyun srinivasa":"Astra","prajwal prabhakar dhole":"Astra","pranjali singh":"Astra","prasadinee maharana":"Wootz","prasant kumar sahay":"Wootz","prashant kanodia":"Ayas","prashil sanjay joshi":"Astra","praveen c ramamurthy":"Vajra","praveen kumar":"Astra","prince kumar":"Wootz","pritam ghosh":"Vajra","priyanshu bhatia":"Wootz","promila":"Vajra","prosenjit das":"Astra","pushkar anirudha pandit":"Vajra","radhika paswan":"Wootz","ragini rana":"Ayas","rajeev ranjan":"Ayas","ram prakash singh":"Astra","rama krishna rao":"Ayas","ramavat pardhavi sai narayana sree":"Wootz","ravi r":"Wootz","rendla pruthvi":"Ayas","rhitabrata das":"Wootz","rishikesh kumar chaurasiya":"Ayas","rishiraj kundu":"Astra","ritacheta ray":"Vajra","ritu singh":"Wootz","rohan dhepe":"Wootz","rohit ashok ahire":"Vajra","rohit kms":"Wootz","rohit kumar":"Ayas","ruchit ramkrushna ambilduke":"Vajra","rupesh":"Wootz","s parasuram":"Ayas","snatarajan":"Ayas","sachin r rondiya":"Ayas","saddhanapu sri ganesh":"Astra","sagar nath":"Astra","sai gautam gopalakrishnan":"Vajra","sambit kumar sahoo":"Vajra","samvidha das":"Vajra","sangeetha c k":"Ayas","sanjana d s":"Vajra","sanket basavaraj baragudi":"Wootz","sanmit chandrashekhar kedar":"Wootz","satvik r kashyap":"Astra","satya sundar das":"Wootz","satyam kumar":"Astra","satyam suwas":"Vajra","saurabh kumar":"Wootz","savinay goel":"Astra","sayali suhas dounde":"Vajra","shibam karmakar":"Vajra","shreya r":"Wootz","shubham karmokar":"Astra","shubham sisodia":"Wootz","sikha laxmi mohapatra":"Wootz","sistla sri venkata sarath chandra":"Ayas","sita choudhary":"Wootz","sivaraj b k":"Ayas","sneha sony":"Ayas","sohaan kumar pattanayak":"Ayas","sougat purohit":"Astra","souharda khan":"Wootz","sourav biswas":"Vajra","sourav maji":"Astra","souvick sadhukhan":"Wootz","souvik dutta":"Ayas","subhasmita sahoo":"Wootz","subho dasgupta":"Wootz","subodh kumar":"Vajra","subramanian r s":"Ayas","suchandrima das":"Astra","sukanya banerjee":"Astra","sumit kumar gahlyan":"Wootz","sunando banerjee":"Ayas","suraj kumar":"Vajra","surendra kumar makineni":"Ayas","suryakanta mondal":"Wootz","suryasarathi bose":"Wootz","swadesh laha":"Wootz","swami aseem gaurav":"Wootz","swapnadeep mandal":"Astra","swastik jena":"Astra","syed muqeet ahmed":"Astra","tadge tejaswini somnath":"Vajra","tembhurkar anshul ajay":"Vajra","thatigutla chidhambar reddy":"Vajra","tilak raj pant":"Wootz","uma ganguly":"Ayas","umang majumder":"Ayas","utkarsh singh":"Wootz","utsav singh martolia":"Ayas","vaishali bhaskar":"Vajra","vallimpula madhavan":"Ayas","vamsi krishna pakki":"Astra","vikas kumar":"Ayas","vineeth vanukuru":"Astra","vishal raj amaresh":"Vajra","vishwas c":"Wootz","yellapu jaswanth":"Ayas","yogita sharma":"Wootz","zahra mafibaniasadi":"Astra","mushtala balakishore":"Vajra","mohan kumar n":"Ayas","jai vignesh":"Astra","sachin rondiya":"Ayas","rohith kms":"Wootz","sathvik madagani":"Vajra","m monishkumar":"Vajra","lipsa sahoo":"Wootz","chethan konkati":"Astra","sayali dounde":"Vajra","mohammed kedir":"Astra","phaneendra kumar":"Astra","rupesh j":"Wootz","birhanu balewgizie":"Vajra","rohit ahire":"Vajra","nupur kulkarni":"Wootz","khushal hatkar":"Astra","nipun jain":"Wootz","ruchit":"Vajra","nabajyoti das":"Astra","prashil joshi":"Astra","mehul":"Ayas","vikranth":"Vajra","k sai charan":"Vajra","g shashidhar":"Vajra","n mahodith":"Ayas","shashwat kumar mishra":"Vajra","swathi arendra":"Astra","harsh kumar singh":"Vajra","durgesh":"Ayas","jayasurya k":"Vajra","akash prajapati":"Vajra","sumitkumar rathor":"Astra","ritesh tandon":"Astra","dapulou":"Wootz","rachakonda benarji":"Ayas","chidambar":"Vajra","r praveen":"Astra","dilip g":"Ayas","anupma thakur":"Vajra","rekha v a":"Astra","rishabh":"Ayas","akram raza":"Wootz","sureddy tejanath reddy":"Ayas","manu m nair":"Ayas","ashis maharathi":"Wootz","rishabh soni":"Wootz","rahul mondal":"Vajra","gowtham":"Wootz","abhijeet mohanta":"Ayas","noumaan":"Vajra","md kaif":"Ayas","saurav ranjan sahay":"Ayas","lakshya lal choudhary":"Astra","rajavarapu pavan kumar":"Wootz","surya teja":"Ayas","yh":"Wootz","karthik sundar":"Astra","yahea hussien":"Astra"};
+        const TEAM_LOOKUP = {"amoulishwar reddy":"Astra","aarya":"Astra","abhay prasad":"Ayas","abhay raj singh":"Vajra","abhijit das":"Wootz","abhijit mandal":"Wootz","abhik n choudhury":"Astra","abhinav chandraker":"Wootz","abhiram karayi":"Ayas","abhishek balaso kajirnekar":"Ayas","abhishek k sharma":"Wootz","abhishek keshav ghatge":"Ayas","abhishek kirar":"Vajra","abhivardhan reddy gopu":"Ayas","abinandanan t a":"Ayas","achinthya krishna b":"Ayas","adarsh bhadouria":"Ayas","aditi ghosh":"Astra","aditya anand":"Vajra","aditya thakkar":"Astra","agastasya gaur":"Astra","ahangjeet chakrabortty":"Ayas","ahmad zonoubi":"Wootz","ahmed kabeer k k":"Astra","aikansh chouhan":"Wootz","akarsh naidu":"Wootz","akash basu":"Ayas","akhil kumar tiwari":"Wootz","akkabathula pradeep":"Astra","akshara n k":"Ayas","akshat godha":"Ayas","akshay sunil salvi":"Vajra","akshay yadav":"Vajra","aloke paul":"Vajra","alugundu sivakumar":"Ayas","amarakonda siri chandana":"Wootz","amey kiran mahajan":"Vajra","amogh kapoor":"Ayas","anandita mishra":"Vajra","anantarupa hore roy":"Astra","ananya panja":"Astra","andrew wisdom zulu":"Ayas","anish atey":"Ayas","ankur chauhan":"Vajra","ankur srivastava":"Astra","annavarapu durga saahiti":"Ayas","anubhav singh":"Vajra","anurag anand":"Ayas","arji brijesh rao":"Astra","aseela abdul azeez":"Vajra","ashitha devi pattabi":"Astra","ashok m raichur":"Wootz","ashutosh yadav":"Astra","asiya s":"Astra","astha khandelwal":"Astra","astik kumar":"Wootz","atharva vadalkar":"Wootz","athira k":"Astra","avilash maji":"Vajra","ayush badaya":"Astra","badal kumar singh":"Vajra","bahni roy":"Astra","balpartap singh":"Ayas","bapan dhara":"Vajra","bavithra m":"Wootz","bency vinse vr":"Ayas","bhagwati prasad":"Vajra","bharath chandran s":"Wootz","bhavika gopal pendam":"Vajra","bhikadiya krishna bhaveshbhai":"Ayas","bhure swapnil shadanan":"Astra","bibhuti bhusan kar":"Astra","bijjam venkata lakshmi praneetha":"Wootz","birhanu balewgizie agmas":"Vajra","boddeda sai kumar":"Wootz","boddula vinay kumar":"Wootz","bright mweene":"Astra","chaduvula rahul":"Vajra","chaitanya panse":"Vajra","chandan srivastava":"Astra","chavda sujal chandrakantbhai":"Vajra","chirantandip mahant":"Vajra","debolina deb":"Ayas","dereje bekele tekliye":"Wootz","dhanyashree m d":"Astra","dibyendu majhi":"Vajra","dineshkumar k":"Astra","donthi yashwanth goud":"Vajra","dova kalyan":"Wootz","durgesh kumar pandey":"Wootz","durgesh rambhau borkar":"Astra","emmadi phaneendra kumar":"Astra","feleke worku tadesse":"Ayas","gangavarapu shashidhar":"Vajra","garikayi rafemoyo":"Ayas","garje sonali devidas":"Wootz","getaw abebe tina":"Wootz","golu gehlot":"Ayas","gopesh kumar gupta":"Vajra","govind s gupta":"Ayas","grandhi v v s m saatvik":"Ayas","gudeta jafo muleta":"Ayas","guttula mohan kumar":"Wootz","harini v":"Vajra","harsh rohilla":"Wootz","hemal singh":"Vajra","hemant kumar":"Ayas","hritwik ghosh":"Vajra","ishu kumar thakur":"Ayas","ishwarabhotla sanjana":"Astra","ismail kamil worke":"Ayas","ismat jamil":"Astra","jai vignesh e":"Astra","javeed ahmad dar":"Ayas","jithunlal s":"Ayas","juvva srinithya":"Wootz","k harjeeth":"Astra","karam jeet pal":"Vajra","karthikeyan s":"Wootz","kartikay verma":"Ayas","kaushal tiwari":"Wootz","kaushik chatterjee":"Ayas","khushal girish hatkar":"Astra","konkati chethan":"Astra","kota sai charan":"Vajra","koustav das":"Wootz","krishn anantharam":"Vajra","krishna agrawal":"Wootz","lad bhumi girishbhai":"Astra","lipsa shaoo":"Wootz","madagani sathvik":"Vajra","mallappa":"Vajra","mamaru wutabachew":"Vajra","manvendra singh":"Ayas","marisetti vikranth sri krishna":"Vajra","mayank bohat":"Vajra","mayank kumar":"Wootz","mayur uikey":"Astra","md iyamot ali":"Wootz","medha shrey":"Astra","mehul darak":"Ayas","mohammed hadhi p p":"Vajra","mohammed kedir mustofa":"Astra","mohan kumar m":"Ayas","mohanakumari senthilkumar tharini":"Ayas","mokalla uday":"Vajra","monika":"Astra","monishkumar m":"Vajra","moses elijah minz":"Vajra","muhstala balakishore":"Vajra","mulakala jaithri":"Astra","nabajoythi das":"Astra","nair jitin satyakumar":"Vajra","nalajala divya":"Vajra","namdi manoja":"Astra","naradhabhatla mahodith":"Ayas","navale aniket rajendra":"Ayas","naveen negi":"Ayas","nikhil suman":"Vajra","nikunj loya":"Astra","nipun":"Wootz","nupur subodh kulkarni":"Wootz","olive chakraborty":"Wootz","p surya samyog":"Vajra","padaikathan p":"Wootz","padmanathanm":"Wootz","pallati tahan kumar":"Vajra","pallavi b m":"Ayas","palli karthikeya":"Ayas","pawar vamshiraj":"Vajra","pikee priya":"Astra","piyush vishwakarma":"Ayas","pooja lohar":"Astra","poulomi basak":"Vajra","pradyun srinivasa":"Astra","prajwal prabhakar dhole":"Astra","pranjali singh":"Astra","prasadinee maharana":"Wootz","prasant kumar sahay":"Wootz","prashant kanodia":"Ayas","prashil sanjay joshi":"Astra","praveen c ramamurthy":"Vajra","praveen kumar":"Astra","prince kumar":"Wootz","pritam ghosh":"Vajra","priyanshu bhatia":"Wootz","promila":"Vajra","prosenjit das":"Astra","pushkar anirudha pandit":"Vajra","radhika paswan":"Wootz","ragini rana":"Ayas","rajeev ranjan":"Ayas","ram prakash singh":"Astra","rama krishna rao":"Ayas","ramavat pardhavi sai narayana sree":"Wootz","ravi r":"Wootz","rendla pruthvi":"Ayas","rhitabrata das":"Wootz","rishikesh kumar chaurasiya":"Ayas","rishiraj kundu":"Astra","ritacheta ray":"Vajra","ritu singh":"Wootz","rohan dhepe":"Wootz","rohit ashok ahire":"Vajra","rohit kms":"Wootz","rohit kumar":"Ayas","ruchit ramkrushna ambilduke":"Vajra","rupesh":"Wootz","s parasuram":"Ayas","snatarajan":"Ayas","sachin r rondiya":"Ayas","saddhanapu sri ganesh":"Astra","sagar nath":"Astra","sai gautam gopalakrishnan":"Vajra","sambit kumar sahoo":"Vajra","samvidha das":"Vajra","sangeetha c k":"Ayas","sanjana d s":"Vajra","sanket basavaraj baragudi":"Wootz","sanmit chandrashekhar kedar":"Wootz","satvik r kashyap":"Astra","satya sundar das":"Wootz","satyam kumar":"Astra","satyam suwas":"Vajra","saurabh kumar":"Wootz","savinay goel":"Astra","sayali suhas dounde":"Vajra","shibam karmakar":"Vajra","shreya r":"Wootz","shubham sisodia":"Wootz","sikha laxmi mohapatra":"Wootz","sistla sri venkata sarath chandra":"Ayas","sita choudhary":"Wootz","sivaraj b k":"Ayas","sneha sony":"Ayas","sohaan kumar pattanayak":"Ayas","sougat purohit":"Astra","souharda khan":"Wootz","sourav biswas":"Vajra","sourav maji":"Astra","souvick sadhukhan":"Wootz","souvik dutta":"Ayas","subhasmita sahoo":"Wootz","subho dasgupta":"Wootz","subodh kumar":"Vajra","subramanian r s":"Ayas","suchandrima das":"Astra","sukanya banerjee":"Astra","sumit kumar gahlyan":"Wootz","sunando banerjee":"Ayas","suraj kumar":"Vajra","surendra kumar makineni":"Ayas","suryakanta mondal":"Wootz","suryasarathi bose":"Wootz","swadesh laha":"Wootz","swami aseem gaurav":"Wootz","swapnadeep mandal":"Astra","swastik jena":"Astra","syed muqeet ahmed":"Astra","tadge tejaswini somnath":"Vajra","tembhurkar anshul ajay":"Vajra","thatigutla chidhambar reddy":"Vajra","tilak raj pant":"Wootz","uma ganguly":"Ayas","umang majumder":"Ayas","utkarsh singh":"Wootz","utsav singh martolia":"Ayas","vaishali bhaskar":"Vajra","vallimpula madhavan":"Ayas","vamsi krishna pakki":"Astra","vikas kumar":"Astra","vineeth vanukuru":"Astra","vishal raj amaresh":"Astra","vishwas c":"Wootz","yellapu jaswanth":"Ayas","yogita sharma":"Wootz","zahra mafibaniasadi":"Astra","sayali dounde":"Vajra","mohammed kedir":"Astra","phaneendra kumar":"Astra","rupesh j":"Wootz","birhanu balewgizie":"Vajra","rohit ahire":"Vajra","nupur kulkarni":"Wootz","khushal hatkar":"Astra","nipun jain":"Wootz","ruchit":"Vajra","nabajyoti das":"Astra","prashil joshi":"Astra","mehul":"Ayas","vikranth":"Vajra","k sai charan":"Vajra","g shashidhar":"Vajra","n mahodith":"Ayas","mushtala balakishore":"Vajra","shashwat kumar mishra":"Wootz","swathi arendra":"Ayas","harsh kumar singh":"Astra","durgesh":"Vajra","mohan kumar n":"Ayas","jayasurya k":"Ayas","akash prajapati":"Ayas","sumitkumar rathor":"Astra","ritesh tandon":"Ayas","dapulou":"Astra","rachakonda benarji":"Wootz","chidambar":"Vajra","jai vignesh":"Astra","r praveen":"Astra","dilip g":"Ayas","anupma thakur":"Vajra","rekha v a":"Ayas","rishabh":"Ayas","akram raza":"Vajra","sureddy tejanath reddy":"Wootz","manu m nair":"Astra","sachin rondiya":"Ayas","ashis maharathi":"Vajra","rishabh soni":"Vajra","rahul mondal":"Wootz","gowtham":"Ayas","abhijeet mohanta":"Astra","noumaan":"Wootz","md kaif":"Vajra","saurav ranjan sahay":"Astra","rohith kms":"Wootz","sathvik madagani":"Vajra","m monishkumar":"Vajra","lakshya lal choudhary":"Wootz","lipsa sahoo":"Wootz","chethan konkati":"Astra","rajavarapu pavan kumar":"Astra","surya teja":"Ayas","karthik sundar":"Vajra","yahea hussien":"Wootz"};
 
         function normalizeName(v) {
             return String(v || "").toLowerCase().replace(/[^a-z\s]/g, '').replace(/\s+/g, ' ').trim();
@@ -1029,21 +994,60 @@
                 const buffer = await res.arrayBuffer();
                 const workbook = XLSX.read(buffer, { type: 'array' });
                 const sheet = workbook.Sheets[workbook.SheetNames[0]];
-                const rows = XLSX.utils.sheet_to_json(sheet, { defval: null });
+                let rows = XLSX.utils.sheet_to_json(sheet, { defval: null });
 
-                const fresh = rows
-                    .filter(row => row['Name1'])
-                    .map(row => {
-                        const name = cleanName(row['Name1']);
-                        return {
-                            name: name,
-                            program: row['Position'] || 'Participant',
-                            sport: collectSports(row),
-                            team: TEAM_LOOKUP[normalizeName(name)] || 'Unassigned',
-                            phone: formatPhone(row['Contact number']),
-                            registered: true
-                        };
+                // Exclude specific names removed from the roster (e.g. junk/duplicate
+                // form submissions) so a live reload doesn't silently resurrect them.
+                const EXCLUDED_NAMES = ["yh", "akhand pratap singh", "shubham karmokar"];
+                rows = rows.filter(row => !EXCLUDED_NAMES.includes(normalizeName(row['Name1'])));
+
+                // De-duplicate by phone number first: the same person can submit the
+                // interest form more than once (e.g. to update their sport choices), and
+                // without this each submission would show up as a separate directory card
+                // and could even land on a different randomly-balanced house than their
+                // other submission.
+                const byPhone = new Map();
+                const noPhone = [];
+                rows.filter(row => row['Name1']).forEach(row => {
+                    const phoneRaw = row['Contact number'] ? String(row['Contact number']).trim() : '';
+                    if (phoneRaw) {
+                        if (!byPhone.has(phoneRaw)) byPhone.set(phoneRaw, []);
+                        byPhone.get(phoneRaw).push(row);
+                    } else {
+                        noPhone.push(row);
+                    }
+                });
+
+                const fresh = [];
+                byPhone.forEach(group => {
+                    const sportsSet = [];
+                    group.forEach(row => {
+                        collectSports(row).split(', ').forEach(s => {
+                            if (s && s !== 'Not specified' && !sportsSet.includes(s)) sportsSet.push(s);
+                        });
                     });
+                    const last = group[group.length - 1];
+                    const name = cleanName(last['Name1']);
+                    fresh.push({
+                        name: name,
+                        program: last['Position'] || 'Participant',
+                        sport: sportsSet.length ? sportsSet.join(', ') : 'Not specified',
+                        team: TEAM_LOOKUP[normalizeName(name)] || 'Unassigned',
+                        phone: formatPhone(last['Contact number']),
+                        registered: true
+                    });
+                });
+                noPhone.forEach(row => {
+                    const name = cleanName(row['Name1']);
+                    fresh.push({
+                        name: name,
+                        program: row['Position'] || 'Participant',
+                        sport: collectSports(row),
+                        team: TEAM_LOOKUP[normalizeName(name)] || 'Unassigned',
+                        phone: formatPhone(row['Contact number']),
+                        registered: true
+                    });
+                });
 
                 if (fresh.length) {
                     // Keep the baked-in "not registered yet" roster entries (from
